@@ -13,3 +13,4 @@ D:\WebDevelopment\Projects\Web Projects\Skinet\Infrastructure\obj\Debug\net9.0\I
 D:\WebDevelopment\Projects\Web Projects\Skinet\Infrastructure\obj\Debug\net9.0\refint\Infrastructure.dll
 D:\WebDevelopment\Projects\Web Projects\Skinet\Infrastructure\obj\Debug\net9.0\Infrastructure.pdb
 D:\WebDevelopment\Projects\Web Projects\Skinet\Infrastructure\obj\Debug\net9.0\ref\Infrastructure.dll
+D:\WebDevelopment\Projects\Web Projects\Skinet\Infrastructure\obj\Debug\net9.0\Infrastructure.sourcelink.json
