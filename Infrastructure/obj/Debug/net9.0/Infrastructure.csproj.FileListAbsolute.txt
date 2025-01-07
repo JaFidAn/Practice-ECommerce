@@ -14,3 +14,5 @@ D:\WebDevelopment\Projects\Web Projects\Skinet\Infrastructure\obj\Debug\net9.0\r
 D:\WebDevelopment\Projects\Web Projects\Skinet\Infrastructure\obj\Debug\net9.0\Infrastructure.pdb
 D:\WebDevelopment\Projects\Web Projects\Skinet\Infrastructure\obj\Debug\net9.0\ref\Infrastructure.dll
 D:\WebDevelopment\Projects\Web Projects\Skinet\Infrastructure\obj\Debug\net9.0\Infrastructure.sourcelink.json
+D:\WebDevelopment\Projects\Web Projects\Skinet\Infrastructure\bin\Debug\net9.0\Data\SeedData\delivery.json
+D:\WebDevelopment\Projects\Web Projects\Skinet\Infrastructure\bin\Debug\net9.0\Data\SeedData\products.json
