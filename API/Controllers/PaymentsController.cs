@@ -63,9 +63,11 @@ public class PaymentsController(IPaymentService paymentService, IUnitOfWork unit
         if (intent.Status == "succeeded")
         {
             var spec = new OrderSpecification(intent.Id, true);
-            var order = await unitOfWork.Repository<Order>().GetEntityWithSpec(spec) ?? throw new Exception("Order not found");
-
-            if ((long)order.GetTotal() * 100 != intent.Amount)
+            var order = await unitOfWork.Repository<Order>().GetEntityWithSpec(spec)
+            ?? throw new Exception("Order not found");
+            var orderTotalInCents = (long)Math.Round(order.GetTotal() * 100,
+            MidpointRounding.AwayFromZero);
+            if (orderTotalInCents != intent.Amount)
             {
                 order.OrderStatus = OrderStatus.PaymentMismatch;
             }
@@ -73,12 +75,8 @@ public class PaymentsController(IPaymentService paymentService, IUnitOfWork unit
             {
                 order.OrderStatus = OrderStatus.PaymentRecieved;
             }
-
             await unitOfWork.Complete();
-
-            //TODO: SignalR - we will send notification to user using SignalR
             var connectionId = NotificationHub.GetConnectionIdByEmail(order.BuyerEmail);
-
             if (!string.IsNullOrEmpty(connectionId))
             {
                 await hubContext.Clients.Client(connectionId).SendAsync("OrderCompleteNotification", order.MapToOrderDto());

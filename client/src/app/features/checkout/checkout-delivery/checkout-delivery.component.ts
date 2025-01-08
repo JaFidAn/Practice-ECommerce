@@ -1,3 +1,4 @@
+import { firstValueFrom } from 'rxjs';
 import { Component, inject, output, type OnInit } from '@angular/core';
 import { CheckoutService } from '../../../core/services/checkout.service';
 import { MatRadioModule } from '@angular/material/radio';
@@ -32,12 +33,12 @@ export class CheckoutDeliveryComponent implements OnInit {
     });
   }
 
-  updateDeliveryMethod(method: DeliveryMethod) {
+  async updateDeliveryMethod(method: DeliveryMethod) {
     this.cartService.selectedDelivery.set(method);
     const cart = this.cartService.cart();
     if (cart) {
       cart.deliveryMethodId = method.id;
-      this.cartService.setCart(cart);
+      await firstValueFrom(this.cartService.setCart(cart));
       this.deliveryComplete.emit(true);
     }
   }
