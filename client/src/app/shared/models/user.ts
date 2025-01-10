@@ -3,6 +3,7 @@ export type User = {
   latsName: string;
   email: string;
   address: Address;
+  roles: string | string[];
 };
 
 export type Address = {

@@ -73,7 +73,7 @@ public class PaymentsController(IPaymentService paymentService, IUnitOfWork unit
             }
             else
             {
-                order.OrderStatus = OrderStatus.PaymentRecieved;
+                order.OrderStatus = OrderStatus.PaymentReceived;
             }
             await unitOfWork.Complete();
             var connectionId = NotificationHub.GetConnectionIdByEmail(order.BuyerEmail);

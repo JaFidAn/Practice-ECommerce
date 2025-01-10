@@ -56,7 +56,8 @@ public class AccountController(SignInManager<AppUser> signInManager) : BaseApiCo
             user.FirstName,
             user.LastName,
             user.Email,
-            Address = user.Address?.MapToAddressDto()
+            Address = user.Address?.MapToAddressDto(),
+            Roles = User.FindFirstValue(ClaimTypes.Role)
         });
     }
 

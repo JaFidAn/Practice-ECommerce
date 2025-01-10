@@ -11,14 +11,18 @@ public class CouponService : ICouponService
     {
         StripeConfiguration.ApiKey = config["StripeSettings:SecretKey"];
     }
+
     public async Task<AppCoupon?> GetCouponFromPromoCode(string code)
     {
         var promotionService = new PromotionCodeService();
-        var options = new PromotionCodeListOptions()
+
+        var options = new PromotionCodeListOptions
         {
             Code = code
         };
+
         var promotionCodes = await promotionService.ListAsync(options);
+
         var promotionCode = promotionCodes.FirstOrDefault();
 
         if (promotionCode != null && promotionCode.Coupon != null)
